@@ -1,0 +1,9 @@
+TimeCreated,EventID,Computer,TargetUserName,IpAddress,Message
+2026-09-18T09:00:00-03:00,4625,LAB-WS01,arthur,192.0.2.10,"Failed logon for arthur"
+2026-09-18T09:01:00-03:00,4625,LAB-WS01,arthur,192.0.2.10,"Failed logon for arthur"
+2026-09-18T09:02:00-03:00,4625,LAB-WS01,arthur,192.0.2.10,"Failed logon for arthur"
+2026-09-18T09:03:00-03:00,4625,LAB-WS01,arthur,192.0.2.10,"Failed logon for arthur"
+2026-09-18T09:04:00-03:00,4625,LAB-WS01,arthur,192.0.2.10,"Failed logon for arthur"
+2026-09-18T09:05:00-03:00,4624,LAB-WS01,arthur,192.0.2.10,"Successful logon for arthur"
+2026-09-18T09:08:00-03:00,7045,LAB-WS01,,,"New service installed: LabUpdater"
+2026-09-18T09:12:00-03:00,1102,LAB-WS01,,,"The audit log was cleared"

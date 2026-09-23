@@ -1,0 +1,8 @@
+2026-09-18T09:00:30-03:00 lab-srv sshd[1200]: Failed password for admin from 198.51.100.24 port 52210 ssh2
+2026-09-18T09:01:30-03:00 lab-srv sshd[1201]: Failed password for admin from 198.51.100.24 port 52211 ssh2
+2026-09-18T09:02:30-03:00 lab-srv sshd[1202]: Failed password for admin from 198.51.100.24 port 52212 ssh2
+2026-09-18T09:03:30-03:00 lab-srv sshd[1203]: Failed password for admin from 198.51.100.24 port 52213 ssh2
+2026-09-18T09:04:30-03:00 lab-srv sshd[1204]: Failed password for admin from 198.51.100.24 port 52214 ssh2
+2026-09-18T09:05:30-03:00 lab-srv sshd[1205]: Accepted password for admin from 198.51.100.24 port 52215 ssh2
+2026-09-18T09:09:30-03:00 lab-srv sudo: admin : TTY=pts/0 ; PWD=/home/admin ; COMMAND=/usr/sbin/useradd tempuser
+2026-09-18T09:15:30-03:00 lab-srv CRON[1300]: (root) CMD (/usr/bin/backup)

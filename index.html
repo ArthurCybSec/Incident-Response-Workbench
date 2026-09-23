@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1521">
+  <meta name="description" content="Analise logs Windows e Linux localmente, investigue uma linha do tempo e gere relatórios de resposta a incidentes.">
+  <title>Incident Response Workbench — Arthur Soares</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Navegação e escopo">
+      <a class="brand" href="#inicio" aria-label="Incident Response Workbench, início">
+        <span class="brand-mark" aria-hidden="true">◇</span>
+        <span><strong>IR Workbench</strong><small>by Arthur Soares</small></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Seções">
+        <a class="active" href="#inicio"><span aria-hidden="true">▣</span> Visão geral</a>
+        <a href="#importar"><span aria-hidden="true">⇧</span> Importar logs</a>
+        <a href="#timeline"><span aria-hidden="true">◷</span> Linha do tempo</a>
+        <a href="#relatorio"><span aria-hidden="true">▤</span> Relatório</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-card"><span class="privacy-dot"></span><strong>100% local</strong><p>Seus logs são analisados no navegador. Nenhum arquivo é enviado.</p></div>
+        <p class="side-foot">Ferramenta educacional de triagem.<br>Não substitui investigação forense.</p>
+      </div>
+    </aside>
+
+    <main id="inicio" class="main-content">
+      <header class="topbar">
+        <div><span class="eyebrow">BLUE TEAM / INCIDENT RESPONSE</span><span class="top-separator">/</span><span class="top-current">Case workspace</span></div>
+        <div class="top-right"><span class="local-indicator"><span></span> Análise local</span><a href="https://github.com/ArthurCybSec" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Arthur Soares">GitHub ↗</a></div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy"><div class="hero-kicker"><span class="kicker-line"></span> INVESTIGUE COM CONTEXTO</div><h1>De logs dispersos a<br><em>uma história clara.</em></h1><p>Importe eventos Windows e Linux, identifique sinais relevantes, acompanhe a sequência dos fatos e gere um relatório de triagem — sem instalar nada.</p><div class="hero-actions"><a class="button primary" href="#importar">Começar análise <span aria-hidden="true">→</span></a><button class="button secondary" id="demoTop" type="button">Explorar demonstração</button></div></div>
+        <div class="hero-visual" aria-hidden="true"><div class="grid-glow"></div><div class="visual-label">SIGNAL / TIMELINE</div><div class="visual-path"><span class="node n1"></span><span class="node n2"></span><span class="node n3"></span><span class="node n4"></span><span class="node n5"></span></div><div class="visual-card card-a"><span>09:04:30</span><strong>AUTH-002</strong><small>Multiple failed logins</small></div><div class="visual-card card-b"><span>09:05:30</span><strong>AUTH-003</strong><small>Successful access</small></div><div class="visual-card card-c"><span>09:12:00</span><strong>WIN-001</strong><small>Audit log cleared</small></div><div class="visual-footer"><span>◆</span> CORRELATION ACTIVE <span class="visual-bars">▂ ▄ ▆ █</span></div></div>
+      </section>
+
+      <div class="section-title" id="importar"><div><span class="section-index">01 / INPUT</span><h2>Importar evidências</h2><p>Arquivos de até 5 MB cada. CSV/XML/JSON do Windows ou LOG/TXT de Linux.</p></div><span class="section-hint">NENHUM UPLOAD EXTERNO</span></div>
+      <section class="import-grid">
+        <div class="drop-zone" id="dropZone" role="button" tabindex="0" aria-label="Selecionar arquivos de log ou arrastar até aqui"><input id="fileInput" type="file" accept=".csv,.xml,.json,.log,.txt" multiple hidden><div class="drop-icon" aria-hidden="true">⇧</div><strong>Arraste seus logs até aqui</strong><span>ou <u>clique para selecionar arquivos</u></span><small>Windows Event Viewer · Linux auth.log / syslog · JSON</small></div>
+        <div class="import-help"><div class="help-head"><span class="help-icon">i</span><strong>Primeira vez por aqui?</strong></div><p>Experimente um caso sintético pronto. Você verá falhas de login, acesso posterior e mudanças importantes em Windows e Linux.</p><button class="button outline" id="demoButton" type="button">Carregar caso de demonstração <span aria-hidden="true">↗</span></button><label for="syslogYear">Ano para logs syslog sem ano</label><input id="syslogYear" type="number" min="2000" max="2100" value="2026"><small>Datas dos arquivos originais não são alteradas.</small></div>
+      </section>
+      <div class="file-summary" id="fileSummary" aria-live="polite">Nenhum arquivo carregado. Use a demonstração para conhecer a ferramenta.</div>
+
+      <section class="metrics" aria-label="Resumo da análise"><div class="metric"><span>EVENTOS ANALISADOS</span><strong id="metricTotal">0</strong><small>Registros processados</small></div><div class="metric"><span>SINALIZADOS</span><strong id="metricFlagged">0</strong><small>Com regras de triagem</small></div><div class="metric critical"><span>CRÍTICOS / ALTOS</span><strong id="metricHigh">0</strong><small>Prioridade de investigação</small></div><div class="metric"><span>FONTES</span><strong id="metricSources">0</strong><small>Arquivos no caso</small></div></section>
+
+      <div class="section-title" id="timeline"><div><span class="section-index">02 / INVESTIGATE</span><h2>Linha do tempo</h2><p id="timelineSubtitle">Os eventos aparecem em ordem cronológica e podem ser filtrados.</p></div><span class="section-hint" id="resultCount">0 RESULTADOS</span></div>
+      <section class="workbench"><div class="filterbar"><label class="search-field"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Buscar IP, usuário, host, mensagem..." aria-label="Buscar eventos"></label><label class="select-field">Prioridade <select id="severityFilter" aria-label="Filtrar por prioridade"><option value="all">Todas</option><option value="critical">Crítica</option><option value="high">Alta</option><option value="medium">Média</option><option value="info">Sem alerta</option></select></label><label class="select-field">Origem <select id="sourceFilter" aria-label="Filtrar por origem"><option value="all">Todas</option><option value="Windows">Windows</option><option value="Linux">Linux</option></select></label></div><div class="workbench-body"><div class="event-list-wrap"><div class="list-head"><span>EVENTOS</span><span>PRIORIDADE</span></div><div id="eventList" class="event-list"><div class="empty-state"><span>◇</span><strong>Seu caso começa aqui</strong><p>Importe um arquivo ou abra a demonstração para explorar a linha do tempo.</p></div></div><button id="showMore" class="show-more" type="button" hidden>Mostrar mais eventos ↓</button></div><aside id="eventDetail" class="event-detail" aria-live="polite"><div class="detail-empty"><span>◎</span><strong>Detalhes da evidência</strong><p>Selecione um evento para ver os campos e a justificativa dos alertas.</p></div></aside></div></section>
+
+      <div class="section-title" id="relatorio"><div><span class="section-index">03 / DOCUMENT</span><h2>Relatório de triagem</h2><p>Registre suas observações e exporte resultados reproduzíveis.</p></div></div>
+      <section class="report-panel"><div class="report-copy"><div class="report-icon">▤</div><div><strong>Transforme sinais em evidências comunicáveis.</strong><p>O relatório HTML reúne escopo, prioridades, eventos sinalizados, notas e limites da análise. Pode ser aberto ou impresso em PDF pelo navegador.</p></div></div><label for="analystNotes">Notas do analista</label><textarea id="analystNotes" rows="4" placeholder="Ex.: confirmar com o responsável pelo host se a instalação do serviço foi autorizada; validar horário e fuso dos logs."></textarea><div class="export-actions"><button class="button primary" id="downloadReport" type="button" disabled>Baixar relatório HTML <span aria-hidden="true">↓</span></button><button class="button subtle" id="downloadJson" type="button" disabled>Exportar JSON</button><button class="button subtle" id="downloadCsv" type="button" disabled>Exportar CSV</button><button class="button danger-quiet" id="clearCase" type="button" disabled>Limpar caso</button></div></section>
+      <footer><span>IR WORKBENCH · ARTHUR SOARES</span><span>Heurísticas auxiliam a triagem; resultados exigem validação humana.</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="src/core.js"></script>
+  <script src="src/app.js"></script>
+</body>
+</html>
